@@ -1,0 +1,65 @@
+﻿@model HelpDesk.Mvc.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h1 class="mb-4">Help Desk Dashboard</h1>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Tickets</h5>
+                    <h2>@Model.TotalTickets</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Open</h5>
+                    <h2>@Model.OpenTickets</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">In Progress</h5>
+                    <h2>@Model.InProgressTickets</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">Closed</h5>
+                    <h2>@Model.ClosedTickets</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-4">
+        <a asp-controller="Ticket"
+           asp-action="Index"
+           class="btn btn-primary">
+            View All Tickets
+        </a>
+
+        <a asp-controller="Ticket"
+           asp-action="Create"
+           class="btn btn-success">
+            Create New Ticket
+        </a>
+    </div>
+
+</div>

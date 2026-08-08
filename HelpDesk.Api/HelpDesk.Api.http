@@ -1,0 +1,15 @@
+@HelpDesk.Api_HostAddress = https://localhost:7004
+
+###
+
+POST {{HelpDesk.Api_HostAddress}}/api/Ticket
+Content-Type: application/json
+
+{
+  "title": "Printer Not Working",
+  "description": "Paper Jam",
+  "priority": "High",
+  "status": "Open",
+  "raisedBy": "Tarman",
+  "createdDate": "2026-08-07T21:30:00"
+}

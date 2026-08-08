@@ -1,0 +1,97 @@
+﻿@model List<HelpDesk.Mvc.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Tickets";
+}
+
+<h2>Help Desk Tickets</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    Create New Ticket
+</a>
+
+<div class="mb-3">
+
+    <a asp-action="Filter"
+       asp-route-status="All"
+       class="btn btn-secondary">
+        All
+    </a>
+
+    <a asp-action="Filter"
+       asp-route-status="Open"
+       class="btn btn-success">
+        Open
+    </a>
+
+    <a asp-action="Filter"
+       asp-route-status="In Progress"
+       class="btn btn-warning">
+        In Progress
+    </a>
+
+    <a asp-action="Filter"
+       asp-route-status="Closed"
+       class="btn btn-danger">
+        Closed
+    </a>
+
+</div>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Raised By</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach (var ticket in Model)
+    {
+        <tr>
+            <td>@ticket.Id</td>
+            <td>@ticket.Title</td>
+            <td>@ticket.Description</td>
+            <td>@ticket.Priority</td>
+            <td>@ticket.Status</td>
+            <td>@ticket.RaisedBy</td>
+            <td>@ticket.CreatedDate</td>
+
+            <td>
+                <a asp-action="Details"
+                    asp-route-id="@ticket.Id"
+                    class="btn btn-sm btn-info">
+                    Details
+                </a>
+
+                <a asp-action="Edit"
+                   asp-route-id="@ticket.Id"
+                   class="btn btn-sm btn-primary">
+                    Edit
+                </a>
+
+                <form asp-action="Delete"
+                      asp-route-id="@ticket.Id"
+                      method="post"
+                      style="display:inline;">
+                    <button type="submit"
+                            class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+
+    </tbody>
+
+</table>
